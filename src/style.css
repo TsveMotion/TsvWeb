@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Fira+Mono:wght@400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+:root {
+  /* Cyberpunk + SpaceX inspired colors */
+  --primary: #00ffe7;
+  --primary-dark: #00d6c0;
+  --secondary: #7c3aed;
+  --secondary-dark: #6225d0;
+  --accent: #ff0076;
+  --space-blue: #005288;
+  --bg-dark: #0a0f1e;
+  --bg-darker: #000000;
+  --text-light: #ffffff;
+  --text-dark: #0a0f1e;
+  --card-bg: rgba(10, 15, 30, 0.8);
+  --container-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, var(--bg-darker) 100%);
+  color: var(--text-light);
+  font-family: 'Orbitron', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+button, input, select, textarea {
+  font-family: 'Fira Mono', monospace;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Container for all content */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* App root styles */
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Loading styles */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* Utility classes */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero Section Glow Effect */
+.hero-glow-effect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+  position: relative;
+  height: 170px;
+}
+.hero-glow-effect svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(0.5px) drop-shadow(0 0 32px #00ffe7cc) drop-shadow(0 0 24px #7c3aed88);
+  z-index: 1;
+}
+.center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle, #00ffe7 0%, #7c3aed 80%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 32px 16px #00ffe7aa, 0 0 64px 24px #7c3aed88;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+  animation: pulseGlow 2.2s infinite alternate cubic-bezier(.7,.1,.3,.9);
+  z-index: 2;
+}
+@keyframes pulseGlow {
+  0% { opacity: 0.8; box-shadow: 0 0 32px 16px #00ffe7aa, 0 0 64px 24px #7c3aed88; }
+  100% { opacity: 1; box-shadow: 0 0 48px 28px #00ffe7cc, 0 0 90px 32px #7c3aedcc; }
+}
+@media (max-width: 700px) {
+  .hero-glow-effect {
+    height: 110px;
+    margin-bottom: 1.2rem;
+  }
+  .hero-glow-effect svg {
+    width: 90px;
+    height: 90px;
+  }
+  .center-glow {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* About Section Logo Fix */
+.about-section {
+  padding: 4rem 0 2rem 0;
+}
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+  justify-content: center;
+}
+.about-image {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-logo {
+  width: 140px;
+  max-width: 22vw;
+  min-width: 90px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 var(--primary);
+  background: rgba(0,0,0,0.12);
+  margin-bottom: 1rem;
+}
+@media (max-width: 700px) {
+  .about-content {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .about-logo {
+    width: 90px;
+    max-width: 38vw;
+  }
+}
+
+/* Pricing Section Styles */
+.pricing-section {
+  padding: 4rem 0 2rem 0;
+  background: var(--bg-dark);
+}
+
+.pricing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background: var(--card-bg);
+  border: 2px solid var(--primary);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 290px;
+  max-width: 340px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.pricing-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 16px 48px 0 var(--primary);
+  border-color: var(--secondary);
+}
+
+.pricing-header {
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.pricing-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--secondary);
+  margin-bottom: 0.2rem;
+}
+.price .period {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-left: 0.3rem;
+  font-weight: 400;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4em 1em;
+  border-radius: 14px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
+}
+
+.pricing-features {
+  margin: 1.2rem 0 1.5rem 0;
+  width: 100%;
+}
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pricing-features li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+}
+.pricing-features i {
+  color: var(--primary);
+  margin-right: 0.7em;
+  font-size: 1.1em;
+}
+
+.pricing-action {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+.btn-pricing {
+  background: var(--primary);
+  color: var(--bg-dark);
+  font-family: 'Orbitron', sans-serif;
+  padding: 0.85em 2em;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 700;
+  border: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px 0 rgba(0,255,231,0.15);
+  margin-bottom: 0.5rem;
+}
+.btn-pricing:hover, .btn-pricing.featured {
+  background: var(--secondary);
+  color: #fff;
+  box-shadow: 0 6px 32px 0 var(--secondary);
+}
+
+.pricing-card.featured {
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 12px 36px 0 var(--accent);
+}
+
+/* Icon styles to replace Font Awesome */
+.contact-icon.email::before {
+  content: '✉️';
+}
+
+.contact-icon.location::before {
+  content: '📍';
+}
+
+/* Service icons */
+.service-icon.web-dev::before {
+  content: '💻';
+}
+
+.service-icon.api-dev::before {
+  content: '🔌';
+}
+
+.service-icon.ui-design::before {
+  content: '🎨';
+}
+
+.service-icon.performance::before {
+  content: '⚡';
+}
